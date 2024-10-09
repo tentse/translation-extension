@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tibetan:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Translate Style Text Boxes</title>
+    <style>
+        body {
+            font-family: Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .translate-container {
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .text-box {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            width: 50%;               /* Two boxes side by side, each taking 48% of the width */
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .box textarea {
+            width: 380px;
+            height: 180px;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .box.output {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 16px;
+        }
+        .button {
+            margin-top: 15px;
+            margin-left: 320px;
+            height: 40px;
+            width: 80px;
+            background-color: rgb(29, 161, 242);
+            border: 1px solid;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: 0.35s;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+        .button:active {
+            opacity: 0.5;
+        }
+        
+        .input-text {
+            color: grey;
+        }
+        .input-text:hover {
+            cursor:default;
+        }
+        .input-text-true {
+            font-family: "Noto Serif Tibetan", serif;
+            font-weight: 550;
+            font-size: 200px;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="translate-container">
+        <!-- Input and Output Text Boxes -->
+        <div class="text-box">
+            <!-- Input Text Box -->
+            <div class="box input-box">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <textarea name="inputtext" id="inputText" placeholder="Type text here...">{{text}}</textarea>
+                    <button class="button" type="submit">Translate</button>
+                </form>
+            </div>
+
+            <!-- Output Text Box -->
+                {% if translate %}
+                    <!--<div class="load-output" id="outputText"></div>-->
+                    <div class="box output-box output" id="outputText">
+                        <textarea readonly class="input-text-true" id="inputText">{{translate}}
+                        </textarea>
+                    </div>
+                {% else %}
+                    <div class="box output-box output" id="outputText">
+                        <textarea readonly class="input-text" id="inputText">Translated text will here...
+                        </textarea>
+                    </div>
+                {% endif %}
+            </div>
+    </div>
+
+</body>
+</html>
