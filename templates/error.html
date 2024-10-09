@@ -7,14 +7,30 @@
         <style>
             p {
                 color: red;
-                font-size: 100px;
+                font-size: 30px;
+            }
+            .goback-button {
+                height: 40px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.15s;
+            }
+            .goback-button:hover {
+                opacity: 0.8;
+            }
+            .goback-button:active {
+                opacity: 0.5;
             }
         </style>
     </head>
     <body>
         <p>
-            You have exceeded you word limit. Word limit to translate is upto 1000.
+            Error code : {{status_code}} - {{status_response}}
         </p>
-        <a href="{% url 'home' %}">GO BACK</a>
+        <p>
+            NOTE : 
+            {{message}}
+        </p>
+        <a href="{% url 'home' %}"><button class="goback-button">GO BACK</button></a>
     </body>
 </html>

@@ -98,7 +98,7 @@
             <div class="box input-box">
                 <form method="POST" action="">
                     {% csrf_token %}
-                    <textarea name="inputtext" id="inputText" placeholder="Type text here...">{{text}}</textarea>
+                    <textarea name="inputtext" id="inputText" placeholder="English text here...">{{text}}</textarea>
                     <button class="button" type="submit">Translate</button>
                 </form>
             </div>
@@ -112,7 +112,7 @@
                     </div>
                 {% else %}
                     <div class="box output-box output" id="outputText">
-                        <textarea readonly class="input-text" id="inputText">Translated text will here...
+                        <textarea readonly class="input-text" id="inputText">Tibetan...
                         </textarea>
                     </div>
                 {% endif %}

@@ -10,7 +10,7 @@ def home(request):
             'Content-Type': 'application/json',
             'Authorization': 'Bearer asdfaheigkdin_sdfasd_feffes'
         }
-
+        text = ['a','b','c'] #remove this
         data = {
             "input": text,
             "target": "bo"
@@ -24,9 +24,6 @@ def home(request):
             return render(request, 'home.html', {"translate": translated, "text": text})
         else:
             print(f"Error: {response.status_code} - {response.text}")
-            return render(request, 'error.html', {"message" : "1000 Word limit exceeded"})
+            return render(request, 'error.html', {"message" : "Maybe you exceeded 1000 Word limit", "status_code": {response.status_code}, "status_response": {response.text}})
     else:
         return render(request, 'home.html')
-
-def error(request):
-    return render(request, 'error.html')
